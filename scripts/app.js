@@ -150,7 +150,7 @@
    * freshest data.
    */
   app.getForecast = function (key, label) {
-    var chacheName = 'cities';
+    var chacheName = 'weatherPWA';
 
     // TODO add cache logic here
     if ('caches' in window) {
@@ -536,7 +536,7 @@
           text: "Ventando",
           date: "Qui, 31 Jan 2019 15:05 PM BRT",
           temp: 27,
-          code: 24
+          code: 44
         },
         forecast: [
           { code: 44, high: 29, low: 20 },
@@ -559,7 +559,7 @@
   },
   ];
   // TODO uncomment line below to test app with fake data
-  // app.updateForecastCard(initialWeatherForecast);
+  app.updateForecastCard(initialWeatherForecast);
 
   /************************************************************************
    *
@@ -593,9 +593,9 @@
   }
 
   // TODO add service worker code here
+  console.log("service");
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('./service-worker.js')
-      .then(function () { console.log('Service Worker Registered'); });
+    console.log("service worker");
+    navigator.serviceWorker.register('service-worker.js', { scope: '/' }).then(function () { console.log('Service Worker Registered'); });
   }
 })();

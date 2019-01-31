@@ -1,5 +1,5 @@
 var dataCacheName = 'weatherData-v1';
-var cacheName = 'weatherPWA-final-1';
+var cacheName = 'weatherPWA';
 var filesToCache = [
   '/',
   '/index.html',
@@ -57,8 +57,9 @@ self.addEventListener('activate', function (e) {
 
 self.addEventListener('fetch', function (e) {
   console.log('[Service Worker] Fetch', e.request.url);
-  var dataUrl = 'xxxxxxxxxxxx';
+  var dataUrl = 'google.com';
   if (e.request.url.indexOf(dataUrl) > -1) {
+    console.log("if");
     /*
      * When the request URL contains dataUrl, the app is asking for fresh
      * weather data. In this case, the service worker always goes to the
@@ -75,6 +76,7 @@ self.addEventListener('fetch', function (e) {
       })
     );
   } else {
+    console.log("else");
     /*
      * The app is asking for app shell files. In this scenario the app uses the
      * "Cache, falling back to the network" offline strategy:
